@@ -1,0 +1,302 @@
+/* Global */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  color: #8a8683;
+  background-color:#ffffff;
+}
+img {
+  max-width: 100%;
+}
+a:link {
+  color: #f68f67;
+  text-decoration: none;
+}
+a:hover {
+  color: #bde2df;
+  text-decoration: none;
+}
+a:visited {
+  color: #f68f67;
+  text-decoration: none;
+}
+
+
+
+
+
+/* Navigation */
+
+.menu {
+  position:fixed;
+  top:0px;
+  width:100%; 
+  height:auto; 
+  background-color:#ffffff;
+  z-index:100;
+}
+#logo {
+  text-align: center;
+  margin: 30px 0 0 0;
+  font-size: 1.5em;
+  color: #f68f67;
+  font-weight:bold;
+}
+#nav {
+  text-align: right;
+  margin: 30px 0 0 0;
+}
+.navigation{
+  float: right;
+  list-style: none;
+  margin: 0;
+}
+.navigation li{
+  float: left;
+  padding:0 0 0 50px;
+}
+.navigation li:hover{
+  cursor:pointer;
+  color: #a9d3d0;
+}
+
+.navigation .active{
+  cursor:pointer;
+  color: #f68f67;
+  font-weight:bold;
+}
+
+
+
+
+/* General Slides */ 
+
+.slide{
+  background-attachment: fixed;
+  width:100%;
+  height:auto;
+  position: relative;
+  padding:140px 0;
+}
+
+.slide h1 {
+  font-size: 3.8em;
+  letter-spacing: -3px;
+  color:#8a8683;
+  font-weight: 700;
+}
+.slide3 h2 {
+  font-size: 2em;
+  color: #8a8683;
+  padding-bottom:20px;
+  font-weight: 400;
+}
+
+
+/* Slide 1 */ 
+
+#slide1{
+  background-color:#fff;
+  padding:120px 0;
+}
+#profile {
+  position:relative;
+  text-align: center;
+  vertical-align: bottom;
+}
+#profile img {
+  width: 160px;
+  border-radius: 80px;
+  border: 4px solid #8A8683;
+  margin-bottom: 12px;
+}
+
+#frontpage {
+  position: relative;
+  text-align: center;
+}
+
+#mantra {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 2em;
+  color: #8a8683;
+  padding-bottom:20px;
+  font-weight: 400;
+}
+
+#profile:after, #frontpage:after {
+  content:''; 
+  width:40px; 
+  height:40px; 
+  position:absolute;
+  border-style: solid;
+  border-width: 0;
+}
+
+#profile:after {
+  border-width: 0 4px 4px 0;
+  bottom:0px;
+  right:0px;
+}
+
+#frontpage:after {
+  border-width: 4px 0 0 4px;
+  position:absolute;
+  top:0px;
+  left:0px;
+}
+
+/* Slide 2 */ 
+
+#slide2{
+  background-image:url('../images/spectacular_seattle-1920x1200.jpg');
+  background-size: 100%;
+  background-color:#f68f67;
+  color:#ffffff;
+  height: 160px;
+}
+
+
+
+/* Slide 3 */ 
+
+#skills ul {
+  list-style: none;  
+}
+
+#slide3{
+  background-color:#ffffff;
+  /*padding-bottom: 20px;*/
+}
+
+#slide3 h2 {
+  text-align: center;
+}
+
+#languages {
+  text-align: right;
+}
+
+#experiences {
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.8em;
+}
+
+#tools: {
+}
+
+/* Slide 4 */ 
+
+#slide4{
+  background-color: #8A8683;
+  color: white;
+  padding: 70px 0;
+  text-align: center;
+}
+
+/* Slide 5 */ 
+
+#slide5{
+  background-color:#ffffff;
+  text-align: center;
+}
+
+
+/* Slide 6 */
+
+#slide6{
+  background-image:url('../images/shore-1920.jpg');
+  background-size: 100%;
+  background-color:#8a8683;
+  color:#ffffff;
+  padding-bottom: 400px;
+}
+
+
+
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+
+#logo {
+  width: 100%;
+  text-align: center;
+}
+
+#nav {
+  width:100%;
+  text-align:center;
+  margin:10px 0;
+}
+
+.navigation{
+  width: 100%;
+  float: center;
+  list-style: none;
+  margin: 0;
+  padding:0;
+}
+
+.navigation li{
+  float: left;
+  width:25%;
+  padding:0;
+}
+
+.slide{
+  background-attachment: fixed;
+  width:100%;
+  position: relative;
+  padding:150px 0;
+}
+
+#decorative {
+  display:none;
+}
+
+#content {
+  text-align:center;
+  width:100%;
+}
+
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+
+#logo {
+  width: 100%;
+  text-align: center;
+}
+
+#nav {
+  width:100%;
+  margin:5px 0;
+}
+
+.navigation{
+  width: 100%;
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding:0;
+}
+
+.navigation li{
+  float: left;
+  width:25%;
+}
+
+.slide{
+  background-attachment: fixed;
+  width:100%;
+  position: relative;
+  padding:150px 0;
+}
+
+
+
+
