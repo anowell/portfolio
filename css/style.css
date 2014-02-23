@@ -23,9 +23,13 @@ a:visited {
   text-decoration: none;
 }
 
-
-
-
+.todo {
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: underline;
+  background-color: orange;
+}
 
 /* Navigation */
 
@@ -188,6 +192,48 @@ a:visited {
 }
 
 #tools: {
+}
+
+#cv svg {
+  /*border: 1px solid gray;*/
+  height:430px;
+}
+
+#cv text {
+  fill: gray;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.node {
+  cursor: default;
+  font-color: gray;
+}
+
+.exp {
+  font-size: 1.5em;
+}
+
+
+.skill {
+  font-size: 1.2em;
+}
+
+circle {
+  stroke: gray;
+  fill-opacity: 0;
+  stroke-width: 2px;
+}
+
+.hover circle {
+  fill-opacity: 0.5;
+}
+
+
+
+.branch {
+  stroke-width: 2px;
+  stroke: gray;
+  fill-opacity: 0;
 }
 
 /* Slide 4 */ 
