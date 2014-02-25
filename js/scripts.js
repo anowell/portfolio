@@ -5,11 +5,18 @@ var CV = (function () {
   var vis = null
 
   cv.init = function(selector) {
-      var svg = d3.select(selector).append("svg:svg")
-      vis = svg.append("svg:g").attr("id", "vis")
+      var root = d3.select(selector)
+      cv.w = root.node().clientWidth;
+      cv.h = root.node().clientHeight;
 
-      cv.w = svg.node().clientWidth;
-      cv.h = svg.node().clientHeight;
+      var svg = root.append("svg:svg")
+        .attr("width", cv.w)
+        .attr("height", cv.h)
+
+      vis = svg.append("svg:g").attr("id", "vis")
+        .attr("width", cv.w)
+        .attr("height", cv.h)
+
       console.log("SVG Size: " + cv.w + ", " + cv.h)
 
       // Consider showing "loading" animation until ready to draw
