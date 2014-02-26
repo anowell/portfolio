@@ -196,10 +196,17 @@ a:visited {
 
 #cv {
   /*border: 1px solid gray;*/
-  height:430px;
+  height:380px;
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-#cv text {
+text {
   fill: gray;
   font-family: 'Open Sans', sans-serif;
 }
@@ -225,15 +232,61 @@ circle {
 }
 
 .hover circle {
-  fill-opacity: 0.5;
+  fill-opacity: 0.8;
+  fill: gray;
+}
+.hover text {
+  /*text-decoration: underline;*/
+}
+text.hover {
+  fill: blue;
+  text-decoration: underline;
+}
+
+#tagcloud text {
+  font-weight: bold;
+  transition: fill-opacity 400ms ease, fill 400ms ease;
+}
+
+#tagcloud.filtered text:not(.focus) {
+  fill: #f4f4f4;
+}
+
+#tagcloud.filtered text.focus {
+  fill: gray;
+}
+
+#explist rect {
+  fill-opacity: 0;
+}
+
+#explist .hover line {
+  stroke: gray;
+}
+
+#explist text {
+  transition: fill-opacity 400ms ease, fill 400ms ease;
+  font-weight: bold;
+}
+
+#explist circle {
+  transition: all 400ms ease; 
 }
 
 
+#explist.filtered :not(.focus) text {
+  /*fill-opacity: 0.1;*/
+  fill: #f4f4f4;
+}
 
-.branch {
-  stroke-width: 2px;
-  stroke: gray;
-  fill-opacity: 0;
+#explist.filtered :not(.focus) circle {
+  /*fill-opacity: 0.1;*/
+  stroke: #f4f4f4;
+}
+
+
+#explist.filtered .focus text {
+  fill: gray;
 }
 
 /* Slide 4 */ 

@@ -26,20 +26,24 @@ var CV = (function () {
         experiences = json.experiences
         skills = json.skills
 
-        // Position CV text (marginTop, lineHeight)
-        cv.positionSkills(40, 30)
-        cv.positionExp(40, 60)
-
-        // Build the node connection lookups:
-        experiences.forEach(function(experience) {
+        // Build the object references between skills and experiences:
+        skills.forEach(function(skill, j) {
+            skill.id = j
+            skill._exp = []
+        })
+        experiences.forEach(function(experience, i) {
+          experience.id = i
           experience._skills = []
           experience.skills.forEach(function(skillName){
-            skills.forEach(function(skill) {
+            var found = false
+            skills.forEach(function(skill, j) {
               if(skillName === skill.name) {
                 experience._skills.push(skill)
                 skill._exp.push(experience)
+                found = true
               }
             })
+            if(!found) { console.log("Unlisted skill: " + skillName)}
           })
         })
 
@@ -50,139 +54,112 @@ var CV = (function () {
       return vis
   }
 
-  cv.positionExp = function(marginTop, lineHeight) {
-    for(var i=0; i<experiences.length; ++i) {
-      experiences[i].x = cv.w/2
-      experiences[i].y = marginTop + i*lineHeight
-      experiences[i].w = 60
-      experiences[i].r = 20
-    }
-  }
-
-  cv.positionSkills = function(marginTop, lineHeight) {
-    var lpos = marginTop
-    var rpos = marginTop
-    skills.forEach(function(skill) {
-      skill._exp = []
-      skill.r = 10
-      if(skill.type == "language") {
-        skill.x = cv.w/4
-        skill.y = lpos
-        lpos += lineHeight
-      } else {
-        skill.x = 3*cv.w/4
-        skill.y = rpos
-        rpos += lineHeight
-      }
-    })
-  }
-
   cv.drawExp = function() {
-    var node = vis.selectAll("g.exp")
+    var radius = 12
+    var xCoord = cv.w/4 - 10 - 2*radius
+    var yCoord = function(i) { return i*lineHeight+marginTop }
+    var marginTop = 40
+    var lineHeight = 60
+
+    var node = vis.append("g")
+      .attr("id", "explist")
+      .selectAll("g.exp")
       .data(experiences)
 
     var nodeEnter = node.enter().append("svg:g")
-      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+      .attr("transform", function(d, i) { return "translate(" + 0 + "," + yCoord(i) + ")"; })
       .attr("class", "exp node")
+      .attr("id", function(d) { return "exp-"+d.id })
       .on("mouseover", cv.selectExp)
       .on("mouseout", cv.unselectExp)
 
-    nodeEnter.append("svg:circle")
-      .attr("cx", function(d) { return -d.r-d.w })
-      .attr("r", function(d) { return d.r })
+    nodeEnter.append("svg:rect")
+      .attr("width", cv.w/4)
+      .attr("height", lineHeight)
+      .attr("x", 0)
+      .attr("y", -lineHeight/2 + "px")
+
+    nodeEnter.append("svg:line")
+      .attr("x1", 0)
+      .attr("y1", "-30px")
+      .attr("x2", cv.w/4)
+      .attr("y2", -lineHeight/2 + "px")
+
+    nodeEnter.append("svg:line")
+      .attr("x1", 0)
+      .attr("y1", lineHeight/2 + "px")
+      .attr("x2", cv.w/4)
+      .attr("y2", lineHeight/2 + "px")
 
     nodeEnter.append("svg:circle")
-      .attr("cx", function(d) { return d.r+d.w})
-      .attr("r", function(d) { return d.r })
+      .attr("cx", xCoord)
+      .attr("r", radius)
 
     nodeEnter.append("svg:text")
       .attr("dy", ".35em")
-      .attr("text-anchor", "middle" )
+      .attr("x", xCoord-10-radius)
+      .attr("text-anchor", "end" )
       .text(function(d) { return d.name; })
   }
 
   cv.drawSkills = function() {
-    var node = vis.selectAll("g.skill")
-      .data(skills)
+    var cloud = d3.layout.cloud()
+      .size([cv.w*3/4, cv.h])
+      .words(skills.map(function(s){
+        return { text: s.name, size: 4+s.weight*14, ref: s }
+      }))
+      .padding(5)
 
-    var nodeEnter = node.enter().append("svg:g")
-      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-      .attr("class", function(d) { return d.type + " skill node"})
-      .on("mouseover", cv.selectSkill)
-      .on("mouseout", cv.unselectSkill)
-
-    nodeEnter.append("svg:circle")
-      .attr("cx", function(d) { return (d.x < cv.w/2) ? +20 : -20 })
-      .attr("r", 10)
-
-    nodeEnter.append("svg:text")
-      .attr("dy", ".35em")
-      .attr("text-anchor",  function(d) { return (d.x < cv.w/2) ? "end" : "start" } ) // or end
-      .text(function(d) { return d.name; })
-  }
-
-  cv.drawBranches = function(lineData) {
-    var splineLine = d3.svg.line()
-      .interpolate("basis")
-
-    d3.select("#vis").selectAll(".branch")
-      .data(lineData)
-      .enter()
-      .insert("svg:path", "g")
-      .attr("class", "branch")
-      .attr("d", splineLine)
-  }
-
-  cv.getLineData = function(exp, skill) {
-    var start = {
-      x: (skill.x < cv.w/2) ? exp.x-exp.w-2*exp.r : exp.x+exp.w+2*exp.r,
-      y: exp.y
-    }
-    var end = {
-      x: (skill.x < cv.w/2) ? skill.x+30 : skill.x-30,
-      y: skill.y
-    }
-
-    var looseness = 0.8
-    var spline = {
-      x: start.x + looseness * (end.x-start.x),
-      y: start.y + looseness + (end.y-start.y)
-    }
-
-    return [[start.x, start.y], [spline.x, spline.y], [end.x, end.y]]
+      .rotate(function(d) { return ~~(Math.random() * 3) * 45 - 45; })
+      .fontSize(function(d) { return d.size; })
+      .on("end", function(words) {
+        vis.append("g")
+            .attr("transform", "translate(" + cv.w*5/8 + "," + cv.h/2 + ")")
+            .attr("id", "tagcloud")
+          .selectAll("g.skill")
+          .data(words)
+          .enter()
+          .append("text")
+            .attr("class", function(d) { return d.ref.type + " skill" })
+            .style("font-size", function(d) { return d.size + "px"; })
+            .attr("id", function(d) { return "skill-"+d.ref.id })
+            .attr("text-anchor", "middle")
+            .attr("transform", function(d) {
+              return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+            })
+            .text(function(d) { return d.text; })
+            .on("mouseover", cv.selectSkill)
+            .on("mouseout", cv.unselectSkill)
+      })
+      .start()
   }
 
   cv.selectExp = function(exp) {
-    this.parentNode.appendChild(this)
     d3.select(this).classed("hover", true)
-
-    var lineData = []
+    d3.select("#tagcloud").classed("filtered", true)
     exp._skills.forEach(function(skill) {
-      lineData.push(cv.getLineData(exp, skill))
+      d3.select("#skill-" + skill.id).classed("focus", true)
     })
-
-    cv.drawBranches(lineData)
   }
 
   cv.selectSkill = function(skill) {
     d3.select(this).classed("hover", true)
-
-    var lineData = []
-    skill._exp.forEach(function(exp) {
-      lineData.push(cv.getLineData(exp, skill))
+    d3.select("#explist").classed("filtered", true)
+    skill.ref._exp.forEach(function(exp) {
+      d3.select("#exp-" + exp.id).classed("focus", true)
     })
-
-    cv.drawBranches(lineData)
   }
 
   cv.unselectExp = function(exp) {
     d3.select(this).classed("hover", false)
-    d3.selectAll(".branch").remove()
+    d3.select("#tagcloud").classed("filtered", false)
+    d3.selectAll(".focus").classed("focus", false)
   }
 
   cv.unselectSkill = function(skill) {
     d3.select(this).classed("hover", false)
-    d3.selectAll(".branch").remove()
+    d3.select("#explist").classed("filtered", false)
+    d3.selectAll(".focus").classed("focus", false)
   }
 
   return cv
