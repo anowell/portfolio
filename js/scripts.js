@@ -128,8 +128,8 @@ var CV = (function () {
               return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
             })
             .text(function(d) { return d.text; })
-            .on("mouseover", cv.selectSkill)
-            .on("mouseout", cv.unselectSkill)
+            .on("mouseover", function(word) { return cv.selectSkill.call(this, word.ref) })
+            .on("mouseout", function(word) { return cv.unselectSkill.call(this, word.ref) })
       })
       .start()
   }
@@ -145,7 +145,7 @@ var CV = (function () {
   cv.selectSkill = function(skill) {
     d3.select(this).classed("hover", true)
     d3.select("#explist").classed("filtered", true)
-    skill.ref._exp.forEach(function(exp) {
+    skill._exp.forEach(function(exp) {
       d3.select("#exp-" + exp.id).classed("focus", true)
     })
   }
