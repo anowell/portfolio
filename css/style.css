@@ -238,22 +238,54 @@ circle {
 .hover text {
   /*text-decoration: underline;*/
 }
+
 text.hover {
-  fill: blue;
-  text-decoration: underline;
+  /*fill: #723E23;*/
+  text-decoration:  underline;
 }
 
 #tagcloud text {
   font-weight: bold;
-  transition: fill-opacity 400ms ease, fill 400ms ease;
+  transition: fill-opacity 300ms ease;
+  cursor: pointer;
+  /*fill 400ms ease;*/
 }
 
 #tagcloud.filtered text:not(.focus) {
-  fill: #f4f4f4;
+  /*fill: #f4f4f4;*/
+  fill-opacity: 0.08;
 }
 
 #tagcloud.filtered text.focus {
-  fill: gray;
+  /*fill: gray;*/
+}
+
+.tool {
+  fill: #52a8da;
+  /*fill: #3B4DA1; 82, 168, 218*/
+}
+
+.language {
+  fill: #ec6d6d;
+  /*fill-opacity: 0.8;*/
+  /*fill: #DB3540;*/
+}
+
+.principle {
+  /*fill: #3CC99F; */
+  fill: #A7A9AB;
+}
+
+.tool.hover {
+  fill: #005db1;
+}
+
+.language.hover {
+  fill: #cf0005;
+}
+
+.principle.hover {
+  fill: #424f55;
 }
 
 #explist rect {
@@ -271,6 +303,7 @@ text.hover {
 
 #explist circle {
   transition: all 400ms ease; 
+  stroke-opacity: 0;
 }
 
 
