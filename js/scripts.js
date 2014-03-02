@@ -47,11 +47,11 @@ var CV = (function () {
           })
         })
 
-        cv.drawExp(vis)
-        cv.drawSkills(vis)
+        cv.drawExp()
+        cv.drawSkills(45, 3)
       })
 
-      return vis
+      return cv
   }
 
   cv.drawExp = function() {
@@ -60,6 +60,8 @@ var CV = (function () {
     var yCoord = function(i) { return i*lineHeight+marginTop }
     var marginTop = 40
     var lineHeight = 60
+
+    vis.select("#explist").remove()
 
     var node = vis.append("g")
       .attr("id", "explist")
@@ -102,7 +104,10 @@ var CV = (function () {
       .text(function(d) { return d.name; })
   }
 
-  cv.drawSkills = function() {
+  cv.drawSkills = function(maxAngle, steps) {
+    maxAngle = typeof maxAngle !== 'undefined' ? maxAngle : 0;
+    steps = typeof steps !== 'undefined' ? steps : 3;
+
     var cloud = d3.layout.cloud()
       .size([cv.w*3/4, cv.h])
       .words(skills.map(function(s){
@@ -110,9 +115,10 @@ var CV = (function () {
       }))
       .padding(5)
 
-      .rotate(function(d) { return ~~(Math.random() * 3) * 45 - 45; })
+      .rotate(function(d) { return steps <= 1 ? maxAngle : ~~(Math.random() * steps) * maxAngle * 2 / (steps-1) - maxAngle; })
       .fontSize(function(d) { return d.size; })
       .on("end", function(words) {
+        vis.select("#tagcloud").remove()
         vis.append("g")
             .attr("transform", "translate(" + cv.w*5/8 + "," + cv.h/2 + ")")
             .attr("id", "tagcloud")
@@ -165,8 +171,7 @@ var CV = (function () {
   return cv
 })()
 
-
 jQuery(document).ready(function ($) {
     $(window).stellar();
-    CV.init("#cv")
+    window.cv = CV.init("#cv")
 });
