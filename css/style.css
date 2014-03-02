@@ -245,10 +245,8 @@ text.hover {
 }
 
 #tagcloud text {
-  font-weight: bold;
   transition: fill-opacity 300ms ease;
   cursor: pointer;
-  /*fill 400ms ease;*/
 }
 
 #tagcloud.filtered text:not(.focus) {
@@ -299,6 +297,7 @@ text.hover {
 #explist text {
   transition: fill-opacity 400ms ease, fill 400ms ease;
   font-weight: bold;
+  fill: #8A8683;
 }
 
 #explist circle {

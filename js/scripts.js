@@ -108,15 +108,18 @@ var CV = (function () {
     maxAngle = typeof maxAngle !== 'undefined' ? maxAngle : 0;
     steps = typeof steps !== 'undefined' ? steps : 3;
 
+    // Consider adding an element, get its style, then remove it
+    // So we can set font-style and font-weight via CSS
     var cloud = d3.layout.cloud()
       .size([cv.w*3/4, cv.h])
       .words(skills.map(function(s){
         return { text: s.name, size: 4+s.weight*14, ref: s }
       }))
       .padding(5)
-
       .rotate(function(d) { return steps <= 1 ? maxAngle : ~~(Math.random() * steps) * maxAngle * 2 / (steps-1) - maxAngle; })
       .fontSize(function(d) { return d.size; })
+      .font("'Open Sans', sans-serif")
+      .fontWeight("bold")
       .on("end", function(words) {
         vis.select("#tagcloud").remove()
         vis.append("g")
@@ -128,6 +131,7 @@ var CV = (function () {
           .append("text")
             .attr("class", function(d) { return d.ref.type + " skill" })
             .style("font-size", function(d) { return d.size + "px"; })
+            .style("font-weight", "bold")
             .attr("id", function(d) { return "skill-"+d.ref.id })
             .attr("text-anchor", "middle")
             .attr("transform", function(d) {
