@@ -225,16 +225,6 @@ text {
   font-size: 1.2em;
 }
 
-circle {
-  stroke: gray;
-  fill-opacity: 0;
-  stroke-width: 2px;
-}
-
-.hover circle {
-  fill-opacity: 0.8;
-  fill: gray;
-}
 .hover text {
   /*text-decoration: underline;*/
 }
@@ -291,7 +281,7 @@ text.hover {
 }
 
 #explist .hover line {
-  stroke: gray;
+  stroke: #A7A9AB;
 }
 
 #explist text {
@@ -300,20 +290,10 @@ text.hover {
   fill: #8A8683;
 }
 
-#explist circle {
-  transition: all 400ms ease; 
-  stroke-opacity: 0;
-}
-
 
 #explist.filtered :not(.focus) text {
   /*fill-opacity: 0.1;*/
   fill: #f4f4f4;
-}
-
-#explist.filtered :not(.focus) circle {
-  /*fill-opacity: 0.1;*/
-  stroke: #f4f4f4;
 }
 
 

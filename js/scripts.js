@@ -93,13 +93,9 @@ var CV = (function () {
       .attr("x2", cv.w/4)
       .attr("y2", lineHeight/2 + "px")
 
-    nodeEnter.append("svg:circle")
-      .attr("cx", xCoord)
-      .attr("r", radius)
-
     nodeEnter.append("svg:text")
       .attr("dy", ".35em")
-      .attr("x", xCoord-10-radius)
+      .attr("x", xCoord)
       .attr("text-anchor", "end" )
       .text(function(d) { return d.name; })
   }
