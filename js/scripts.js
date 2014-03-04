@@ -48,7 +48,7 @@ var CV = (function () {
         })
 
         cv.drawExp()
-        cv.drawSkills(45, 3)
+        cv.drawSkills(45, 2)
       })
 
       return cv
@@ -109,14 +109,15 @@ var CV = (function () {
     var cloud = d3.layout.cloud()
       .size([cv.w*3/4, cv.h])
       .words(skills.map(function(s){
-        return { text: s.name, size: 4+s.weight*14, ref: s }
+        return { text: s.name, size: s.weight*16, ref: s }
       }))
-      .padding(5)
+      .padding(3)
       .rotate(function(d) { return steps <= 1 ? maxAngle : ~~(Math.random() * steps) * maxAngle * 2 / (steps-1) - maxAngle; })
       .fontSize(function(d) { return d.size; })
       .font("'Open Sans', sans-serif")
       .fontWeight("bold")
-      .on("end", function(words) {
+      .on("end", function(words, bounds) {
+        console.log(bounds)
         vis.select("#tagcloud").remove()
         vis.append("g")
             .attr("transform", "translate(" + cv.w*5/8 + "," + cv.h/2 + ")")
@@ -141,7 +142,6 @@ var CV = (function () {
   }
 
   cv.selectExp = function(exp) {
-    d3.select(this).classed("hover", true)
     d3.select("#tagcloud").classed("filtered", true)
     exp._skills.forEach(function(skill) {
       d3.select("#skill-" + skill.id).classed("focus", true)
@@ -149,7 +149,6 @@ var CV = (function () {
   }
 
   cv.selectSkill = function(skill) {
-    d3.select(this).classed("hover", true)
     d3.select("#explist").classed("filtered", true)
     skill._exp.forEach(function(exp) {
       d3.select("#exp-" + exp.id).classed("focus", true)
@@ -157,13 +156,11 @@ var CV = (function () {
   }
 
   cv.unselectExp = function(exp) {
-    d3.select(this).classed("hover", false)
     d3.select("#tagcloud").classed("filtered", false)
     d3.selectAll(".focus").classed("focus", false)
   }
 
   cv.unselectSkill = function(skill) {
-    d3.select(this).classed("hover", false)
     d3.select("#explist").classed("filtered", false)
     d3.selectAll(".focus").classed("focus", false)
   }

@@ -5,7 +5,7 @@
       "start": "2013-03-25",
       "end": null,
       "skills": ["Ruby", "Javascript", "Coffeescript", "Java", "CSS/Sass", "Python", "SQL",
-                  "NodeJS", "BackboneJS", "Git", "Chef", "PostgreSQL", "MongoDB", "Agile"],
+                  "NodeJS", "BackboneJS", "Git", "Chef", "PostgreSQL", "Agile"],
       "desciption": ""
     },
     {
@@ -39,7 +39,7 @@
       "desciption": ""
     },
     {
-      "name": "For fun",
+      "name": "Just for fun",
       "start": null,
       "end": null,
       "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass",

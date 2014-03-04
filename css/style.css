@@ -225,18 +225,14 @@ text {
   font-size: 1.2em;
 }
 
-.hover text {
-  /*text-decoration: underline;*/
-}
-
-text.hover {
-  /*fill: #723E23;*/
-  text-decoration:  underline;
-}
 
 #tagcloud text {
   transition: fill-opacity 300ms ease;
   cursor: pointer;
+}
+
+#tagcloud text:hover {
+  text-decoration:  underline;
 }
 
 #tagcloud.filtered text:not(.focus) {
@@ -244,35 +240,27 @@ text.hover {
   fill-opacity: 0.08;
 }
 
-#tagcloud.filtered text.focus {
-  /*fill: gray;*/
-}
-
 .tool {
   fill: #52a8da;
-  /*fill: #3B4DA1; 82, 168, 218*/
 }
 
 .language {
   fill: #ec6d6d;
-  /*fill-opacity: 0.8;*/
-  /*fill: #DB3540;*/
 }
 
 .principle {
-  /*fill: #3CC99F; */
-  fill: #A7A9AB;
+  fill: #8A8683;
 }
 
-.tool.hover {
+.tool:hover {
   fill: #005db1;
 }
 
-.language.hover {
+.language:hover {
   fill: #cf0005;
 }
 
-.principle.hover {
+.principle:hover {
   fill: #424f55;
 }
 
@@ -280,7 +268,7 @@ text.hover {
   fill-opacity: 0;
 }
 
-#explist .hover line {
+#explist :hover line {
   stroke: #A7A9AB;
 }
 
@@ -290,9 +278,7 @@ text.hover {
   fill: #8A8683;
 }
 
-
 #explist.filtered :not(.focus) text {
-  /*fill-opacity: 0.1;*/
   fill: #f4f4f4;
 }
 
