@@ -206,6 +206,17 @@ a:visited {
   user-select: none;
 }
 
+#timeline {
+
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
 text {
   fill: gray;
   font-family: 'Open Sans', sans-serif;
@@ -282,9 +293,16 @@ text {
   fill: #f4f4f4;
 }
 
-
 #explist.filtered .focus text {
   fill: gray;
+}
+
+#timeline rect:not(.focus) {
+  fill-opacity:0.1;
+}
+
+#timeline rect.focus {
+  fill-opacity:1;
 }
 
 /* Slide 4 */ 

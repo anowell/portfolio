@@ -2,6 +2,7 @@ var CV = (function () {
   var cv = {}
   var experiences = []
   var skills = []
+  var timelineData = []
   var vis = null
 
   cv.init = function(selector) {
@@ -47,11 +48,49 @@ var CV = (function () {
           })
         })
 
+        // Build the timeline data object
+        var todayTime = (new Date()).getTime()
+        var parseDateToTime = function(dateStr) {
+          return (dateStr) ? d3.time.format("%Y-%m-%d").parse(dateStr) : todayTime
+        }
+        experiences.forEach(function(experience, i) {
+          if(!experience.times) { return }
+          var times = []
+          experience.times.forEach(function(time) {
+            times.push({
+              "class": "exp-"+i,
+              "starting_time": parseDateToTime(time.start),
+              "ending_time": parseDateToTime(time.end)
+            })
+          })
+          if(times.length > 0) {
+            timelineData.push({"times": times})
+          }
+        })
+
         cv.drawExp()
         cv.drawSkills(45, 2)
+        cv.drawTimeline()
       })
 
       return cv
+  }
+
+  cv.drawTimeline = function() {
+    var chart = d3.timeline()
+      .width(cv.w*3/4)
+      .tickFormat({
+        format: d3.time.format("%Y"),
+        tickTime: d3.time.years,
+        tickInterval: 1,
+        tickSize: 8,
+      })
+
+    var node = vis.append("g")
+      .attr("id", "timeline")
+      .attr("transform", "translate(" + cv.w*1/4 + "," + (cv.h-80) + ")" )
+      .datum(timelineData)
+      .call(chart)
   }
 
   cv.drawExp = function() {
@@ -107,7 +146,7 @@ var CV = (function () {
     // Consider adding an element, get its style, then remove it
     // So we can set font-style and font-weight via CSS
     var cloud = d3.layout.cloud()
-      .size([cv.w*3/4, cv.h])
+      .size([cv.w*3/4, cv.h-80])
       .words(skills.map(function(s){
         return { text: s.name, size: Math.pow(1.8,s.weight)*8, ref: s }
       }))
@@ -120,7 +159,7 @@ var CV = (function () {
         console.log(bounds)
         vis.select("#tagcloud").remove()
         vis.append("g")
-            .attr("transform", "translate(" + cv.w*5/8 + "," + cv.h/2 + ")")
+            .attr("transform", "translate(" + cv.w*5/8 + "," + (cv.h/2-40) + ")")
             .attr("id", "tagcloud")
           .selectAll("g.skill")
           .data(words)
@@ -143,6 +182,7 @@ var CV = (function () {
 
   cv.selectExp = function(exp) {
     d3.select("#tagcloud").classed("filtered", true)
+    d3.selectAll("#timeline .exp-"+exp.id).classed("focus", true)
     exp._skills.forEach(function(skill) {
       d3.select("#skill-" + skill.id).classed("focus", true)
     })

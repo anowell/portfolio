@@ -2,46 +2,43 @@
   "experiences" : [
     {
       "name": "Socrata",
-      "start": "2013-03-25",
-      "end": null,
+      "times": [{"start": "2013-03-25", "end": null}],
       "skills": ["Ruby", "Javascript", "Coffeescript", "Java", "CSS/Sass", "Python", "SQL",
                   "NodeJS", "BackboneJS", "Git", "Chef", "PostgreSQL", "Agile"],
       "desciption": ""
     },
     {
       "name": "Lestanza",
-      "start": "2012-02-01",
-      "end": null,
+      "times": [{"start": "2012-02-01", "end": null}],
       "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass", "SQL",
                   "Rails", "REST", "MVC", "Git", "Docker", "Heroku", "PostgreSQL", "TDD"],
       "desciption": ""
     },
     {
       "name": "Microsoft",
-      "start": "2009-01-26",
-      "end": "2013-03-21",
+      "times": [{"start": "2009-01-26", "end": "2013-03-21"}],
       "skills": ["C/C++", "C#",
                   "TDD", "Agile"],
       "desciption": ""
     },
     {
       "name": "IBM",
-      "start": "2008-05-19",
-      "end": "2008-08-15",
+      "times": [{"start": "2008-05-19", "end": "2008-08-15"}],
       "skills": ["Java"],
       "desciption": ""
     },
     {
       "name": "Intermec",
-      "start": ["2007-05-14", "2007-08-24"],
-      "end": ["2005-05-16", "2006-01-06"],
+      "times": [
+        {"start": "2007-05-14", "end": "2007-08-10"},
+        {"start": "2005-05-16", "end": "2006-01-06"}
+      ],
       "skills": ["C/C++"],
       "desciption": ""
     },
     {
       "name": "Just for fun",
-      "start": null,
-      "end": null,
+      "times": null,
       "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass",
                 "NodeJS", "Rails", "BackboneJS", "Git", "MongoDB", "REST", "Photoshop", "d3"],
       "desciption": ""
@@ -50,16 +47,14 @@
   "education": [
     {
       "name": "Iowa State",
-      "start": "2003-09-01",
-      "end": "2008-12-12",
+      "times": [{"start": "2003-09-01", "end": "2008-12-12"}],
       "skills": ["C++", "Java", "VHDL", "Verilog", "MIPS",
                   "FPGA", "Embedded Systems"],
       "desciption": "Graduated with B.S. in Computer Engineering"
     },
     {
       "name": "Tec de Monterrey",
-      "start": "2007-05-14",
-      "end": ["2005-05-16", "2006-01-06"],
+      "times": [{"start": "2007-08-13", "end": "2007-12-14"}],
       "skills": ["Spanish", "Embedded Systems"],
       "desciption": "Semester Abroad - Fluent in Spanish"
     }
