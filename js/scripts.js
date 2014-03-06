@@ -109,7 +109,7 @@ var CV = (function () {
     var cloud = d3.layout.cloud()
       .size([cv.w*3/4, cv.h])
       .words(skills.map(function(s){
-        return { text: s.name, size: s.weight*16, ref: s }
+        return { text: s.name, size: Math.pow(1.8,s.weight)*8, ref: s }
       }))
       .padding(3)
       .rotate(function(d) { return steps <= 1 ? maxAngle : ~~(Math.random() * steps) * maxAngle * 2 / (steps-1) - maxAngle; })
