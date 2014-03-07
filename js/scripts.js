@@ -79,6 +79,7 @@ var CV = (function () {
   cv.drawTimeline = function() {
     var chart = d3.timeline()
       .width(cv.w*3/4)
+      .colors(d3.scale.category10())
       .tickFormat({
         format: d3.time.format("%Y"),
         tickTime: d3.time.years,
