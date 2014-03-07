@@ -2,46 +2,68 @@
   "experiences" : [
     {
       "name": "Socrata",
+      "title": "Software Engineer",
       "times": [{"start": "2013-03-25", "end": null}],
       "skills": ["Ruby", "Javascript", "Coffeescript", "Java", "CSS/Sass", "Python", "SQL",
-                  "NodeJS", "BackboneJS", "Git", "Chef", "PostgreSQL", "Agile"],
-      "desciption": ""
+                  "NodeJS", "BackboneJS", "Git", "Chef", "Sensu", "PostgreSQL", "Agile"],
+      "accomplishments": [
+        "Developed automation to launch entire stack on Azure",
+        "Implemented Sensu monitoring across physical datacenters and Azure",
+        "Drove operational requirements for a major backend replacement - from hardare capacity planning to configuration and deployment on Azure",
+        "Co-authored OSS performance testing framework: [client-test](http://github.com/socrata/client-test) and [orthos](http://github.com/socrata/orthos)",
+        "Championed mini-projects to reduce developer frustrations, including a couple that are open-sourced: [metadash](http://github.com/socrata/metadash) and [pagerdash](http://github.com/socrata/pagerdash)"
+      ]
     },
     {
       "name": "Lestanza",
+      "title": "Co-creator",
       "times": [{"start": "2012-02-01", "end": null}],
       "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass", "SQL",
                   "Rails", "REST", "MVC", "Git", "Docker", "Heroku", "PostgreSQL", "TDD"],
-      "desciption": ""
+      "description": "[Lestanza](http://lestanza.com) is Spanish CRM web app to facilitate daycare management in Mexico",
+      "accomplishments": [
+        "Designed, implemented, tested, deployed, and maintained a Rails production web app on Heroku leveraging PostgreSQL"
+      ]
     },
     {
       "name": "Microsoft",
+      "title": "Software Design Engineer in Test 2",
       "times": [{"start": "2009-01-26", "end": "2013-03-21"}],
       "skills": ["C/C++", "C#",
                   "TDD", "Agile"],
-      "desciption": ""
+      "accomplishments": [
+        "*System Center Configuration Manager*: Drove software distribution test strategy and security compliance for write filter aware clients",
+        "*Windows Core Storage*: Developed Windows 7 storage certification tools relating to SSDs, Storage Controllers, and Data Integrity",
+        "*Intern Social Coordinator*: Coordinated and facilitated intern events throughout the summer"
+      ]
     },
     {
       "name": "IBM",
+      "title": "Intern Software Engineer",
       "times": [{"start": "2008-05-19", "end": "2008-08-15"}],
       "skills": ["Java"],
-      "desciption": ""
+      "description": "System x Preload Team "
     },
     {
       "name": "Intermec",
+      "title": "Intern Software Engineer",
       "times": [
         {"start": "2007-05-14", "end": "2007-08-10"},
         {"start": "2005-05-16", "end": "2006-01-06"}
       ],
       "skills": ["C/C++"],
-      "desciption": ""
+      "description": "Windows Mobile Platform Team"
     },
     {
       "name": "Just for fun",
-      "times": null,
       "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass",
                 "NodeJS", "Rails", "BackboneJS", "Git", "MongoDB", "REST", "Photoshop", "d3"],
-      "desciption": ""
+      "description": "I seem to always have a project on the back-burner - often to experiment with new technology",
+      "accomplishments": [
+        "*Lestanza*: Lestanza started in this category, and grew into project with business aspirations",
+        "*[PrayerCloud](http://github.com/anowell/prayercloud-web)*: A proof-of-concept app to manage prayer lists; my first stab at Node.js, Express.js, Backbone.js, MongoDB, and even Photoshop",
+        "*My Portfolio*: This very portfolio was an excuse to experiment with d3 and parallax design; did I mention it's [data-driven](http://github.com/anowell/portfolio/blob/gh-pages/cv.json)"
+      ]
     }
   ],
   "education": [
@@ -50,13 +72,13 @@
       "times": [{"start": "2003-09-01", "end": "2008-12-12"}],
       "skills": ["C++", "Java", "VHDL", "Verilog", "MIPS",
                   "FPGA", "Embedded Systems"],
-      "desciption": "Graduated with B.S. in Computer Engineering"
+      "description": "Graduated with B.S. in Computer Engineering"
     },
     {
       "name": "Tec de Monterrey",
       "times": [{"start": "2007-08-13", "end": "2007-12-14"}],
       "skills": ["Spanish", "Embedded Systems"],
-      "desciption": "Semester Abroad - Fluent in Spanish"
+      "description": "Semester Abroad - Fluent in Spanish"
     }
   ],
   "skills": [
@@ -78,6 +100,7 @@
       { "type": "principle", "name": "Agile", "weight": 1 },
       { "type": "tool", "name": "Git", "weight": 1 },
       { "type": "tool", "name": "Chef", "weight": 2 },
+      { "type": "tool", "name": "Sensu", "weight": 2 },
       { "type": "tool", "name": "Docker", "weight": 2 },
       { "type": "tool", "name": "Heroku", "weight": 2 },
       { "type": "tool", "name": "PostgreSQL", "weight": 2 },

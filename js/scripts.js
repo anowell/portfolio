@@ -14,7 +14,7 @@ var CV = (function () {
         .attr("width", cv.w)
         .attr("height", cv.h)
 
-      vis = svg.append("svg:g").attr("id", "vis")
+      vis = svg.append("svg:g")
         .attr("width", cv.w)
         .attr("height", cv.h)
 
@@ -71,6 +71,7 @@ var CV = (function () {
         cv.drawExp()
         cv.drawSkills(45, 2)
         cv.drawTimeline()
+        cv.renderDetails(experiences[0])
       })
 
       return cv
@@ -181,12 +182,45 @@ var CV = (function () {
       .start()
   }
 
+  cv.markdown = function(text) {
+    var reLink = /\[(.+?)\]\((.+?)\)/
+    var reBold = /\*(.+?)\*/
+    while(text.match(reLink)) {
+      text = text.replace(reLink, '<a href="$2">$1</a>')
+    }
+    while(text.match(reBold)) {
+      text = text.replace(reBold, '<b>$1</b>')
+    }
+    return text
+  }
+
+  cv.renderDetails = function(exp) {
+    var html = []
+    var title = (exp.title) ? (exp.title+' at '+exp.name) : exp.name
+    html.push('<h3 class="title">' + title + '</h3>')
+
+    if(exp.description) {
+      html.push('<div class="description">' + cv.markdown(exp.description) + '</div>')
+    }
+
+    if(exp.accomplishments) {
+      html.push('<ul class="accomplishments">')
+      exp.accomplishments.forEach(function(acc) {
+        html.push('<li>' + cv.markdown(acc) + '</li>')
+      })
+      html.push('</ul>')
+    }
+
+    $('#cv-info').html(html.join(""))
+  }
+
   cv.selectExp = function(exp) {
     d3.select("#tagcloud").classed("filtered", true)
     d3.selectAll("#timeline .exp-"+exp.id).classed("focus", true)
     exp._skills.forEach(function(skill) {
       d3.select("#skill-" + skill.id).classed("focus", true)
     })
+    cv.renderDetails(exp)
   }
 
   cv.selectSkill = function(skill) {
@@ -211,5 +245,5 @@ var CV = (function () {
 
 jQuery(document).ready(function ($) {
     $(window).stellar();
-    window.cv = CV.init("#cv")
+    window.cv = CV.init("#cv-vis")
 });

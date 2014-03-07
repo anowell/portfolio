@@ -194,7 +194,7 @@ a:visited {
 #tools: {
 }
 
-#cv {
+#cv-vis {
   /*border: 1px solid gray;*/
   height:380px;
   cursor: default;
@@ -303,6 +303,13 @@ text {
 
 #timeline rect.focus {
   fill-opacity:1;
+}
+
+#cv-info {
+  height: 240px;
+}
+#cv-info .description {
+  font-style: italic;
 }
 
 /* Slide 4 */ 
