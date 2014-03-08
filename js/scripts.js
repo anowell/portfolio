@@ -3,22 +3,9 @@ var CV = (function () {
   var experiences = []
   var skills = []
   var timelineData = []
-  var vis = null
 
-  cv.init = function(selector) {
-      var root = d3.select(selector)
-      cv.w = root.node().clientWidth;
-      cv.h = root.node().clientHeight;
-
-      var svg = root.append("svg:svg")
-        .attr("width", cv.w)
-        .attr("height", cv.h)
-
-      vis = svg.append("svg:g")
-        .attr("width", cv.w)
-        .attr("height", cv.h)
-
-      console.log("SVG Size: " + cv.w + ", " + cv.h)
+  cv.init = function(selectors) {
+      cv.selectors = selectors || {}
 
       // Consider showing "loading" animation until ready to draw
       d3.json("cv.json", function(err, json) {
@@ -30,7 +17,6 @@ var CV = (function () {
         // Build the object references between skills and experiences:
         skills.forEach(function(skill, j) {
             skill.id = j
-            skill._exp = []
         })
         experiences.forEach(function(experience, i) {
           experience.id = i
@@ -40,7 +26,7 @@ var CV = (function () {
             skills.forEach(function(skill, j) {
               if(skillName === skill.name) {
                 experience._skills.push(skill)
-                skill._exp.push(experience)
+                // skill._exp.push(experience)
                 found = true
               }
             })
@@ -68,18 +54,22 @@ var CV = (function () {
           }
         })
 
-        cv.drawExp()
-        cv.drawSkills(45, 2)
-        cv.drawTimeline()
-        cv.renderDetails(experiences[0])
+        $("#cv").mouseleave(cv.unselectAll)
+
+        cv.renderExp()
+        cv.renderSkills(45, 3)
+        cv.renderTimeline()
       })
 
       return cv
   }
 
-  cv.drawTimeline = function() {
+  cv.renderTimeline = function() {
+    var canvas = createCanvas(cv.selectors.timeline)
+
     var chart = d3.timeline()
-      .width(cv.w*3/4)
+      .width(canvas.width)
+      .margin({left:5, right:5, top:30, bottom:30})
       .colors(d3.scale.category10())
       .tickFormat({
         format: d3.time.format("%Y"),
@@ -88,67 +78,59 @@ var CV = (function () {
         tickSize: 8,
       })
 
-    var node = vis.append("g")
+    var node = canvas.svg.append("g")
       .attr("id", "timeline")
-      .attr("transform", "translate(" + cv.w*1/4 + "," + (cv.h-80) + ")" )
       .datum(timelineData)
       .call(chart)
   }
 
-  cv.drawExp = function() {
-    var radius = 12
-    var xCoord = cv.w/4 - 10 - 2*radius
-    var yCoord = function(i) { return i*lineHeight+marginTop }
-    var marginTop = 40
-    var lineHeight = 60
+  cv.renderExp = function() {
+    var divs = experiences.map(function(exp, index) {
+      return '<div data-id="'+index+'" class="exp">'+exp.name+'</div>'
+    })
 
-    vis.select("#explist").remove()
+    var withExp = function(handler) {
+      return function(evt) {
+        handler.call(evt.target, experiences[evt.target.dataset.id])
+      }
+    }
 
-    var node = vis.append("g")
-      .attr("id", "explist")
-      .selectAll("g.exp")
-      .data(experiences)
-
-    var nodeEnter = node.enter().append("svg:g")
-      .attr("transform", function(d, i) { return "translate(" + 0 + "," + yCoord(i) + ")"; })
-      .attr("class", "exp node")
-      .attr("id", function(d) { return "exp-"+d.id })
-      .on("mouseover", cv.selectExp)
-      .on("mouseout", cv.unselectExp)
-
-    nodeEnter.append("svg:rect")
-      .attr("width", cv.w/4)
-      .attr("height", lineHeight)
-      .attr("x", 0)
-      .attr("y", -lineHeight/2 + "px")
-
-    nodeEnter.append("svg:line")
-      .attr("x1", 0)
-      .attr("y1", "-30px")
-      .attr("x2", cv.w/4)
-      .attr("y2", -lineHeight/2 + "px")
-
-    nodeEnter.append("svg:line")
-      .attr("x1", 0)
-      .attr("y1", lineHeight/2 + "px")
-      .attr("x2", cv.w/4)
-      .attr("y2", lineHeight/2 + "px")
-
-    nodeEnter.append("svg:text")
-      .attr("dy", ".35em")
-      .attr("x", xCoord)
-      .attr("text-anchor", "end" )
-      .text(function(d) { return d.name; })
+    $(cv.selectors.experience).html(divs.join("\n"))
+    $(cv.selectors.experience).on('mouseenter', '.exp', withExp(cv.selectExp))
+    $(cv.selectors.experience).on('mouseleave', '.exp', withExp(cv.selectExp))
   }
 
-  cv.drawSkills = function(maxAngle, steps) {
+  cv.renderSkills = function(maxAngle, steps) {
     maxAngle = typeof maxAngle !== 'undefined' ? maxAngle : 0;
     steps = typeof steps !== 'undefined' ? steps : 3;
 
+    var canvas = createCanvas(cv.selectors.skills)
+
+    var renderWords = function(words, bounds) {
+      // console.log(bounds)
+      canvas.svg.append("g")
+        .attr("transform", "translate(" + canvas.width/2 + "," + (canvas.height/2) + ")")
+        .selectAll("g.skill")
+          .data(words)
+            .enter()
+              .append("text")
+                .attr("class", function(d) { return d.ref.type + " skill" })
+                .style("font-size", function(d) { return d.size + "px"; })
+                .style("font-weight", "bold")
+                .attr("id", function(d) { return "skill-"+d.ref.id })
+                .attr("text-anchor", "middle")
+                .attr("transform", function(d) {
+                  return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                })
+                .text(function(d) { return d.text; })
+                // .on("mouseover", function(word) { return cv.selectSkill.call(this, word.ref) })
+                // .on("mouseout", function(word) { return cv.unselectSkill.call(this, word.ref) })
+    }
+
     // Consider adding an element, get its style, then remove it
     // So we can set font-style and font-weight via CSS
-    var cloud = d3.layout.cloud()
-      .size([cv.w*3/4, cv.h-80])
+    d3.layout.cloud()
+      .size([canvas.width, canvas.height])
       .words(skills.map(function(s){
         return { text: s.name, size: Math.pow(1.8,s.weight)*8, ref: s }
       }))
@@ -157,28 +139,7 @@ var CV = (function () {
       .fontSize(function(d) { return d.size; })
       .font("'Open Sans', sans-serif")
       .fontWeight("bold")
-      .on("end", function(words, bounds) {
-        console.log(bounds)
-        vis.select("#tagcloud").remove()
-        vis.append("g")
-            .attr("transform", "translate(" + cv.w*5/8 + "," + (cv.h/2-40) + ")")
-            .attr("id", "tagcloud")
-          .selectAll("g.skill")
-          .data(words)
-          .enter()
-          .append("text")
-            .attr("class", function(d) { return d.ref.type + " skill" })
-            .style("font-size", function(d) { return d.size + "px"; })
-            .style("font-weight", "bold")
-            .attr("id", function(d) { return "skill-"+d.ref.id })
-            .attr("text-anchor", "middle")
-            .attr("transform", function(d) {
-              return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-            })
-            .text(function(d) { return d.text; })
-            .on("mouseover", function(word) { return cv.selectSkill.call(this, word.ref) })
-            .on("mouseout", function(word) { return cv.unselectSkill.call(this, word.ref) })
-      })
+      .on("end", renderWords)
       .start()
   }
 
@@ -211,33 +172,61 @@ var CV = (function () {
       html.push('</ul>')
     }
 
-    $('#cv-info').html(html.join(""))
+    $(cv.selectors.details).html(html.join(""))
   }
 
   cv.selectExp = function(exp) {
-    d3.select("#tagcloud").classed("filtered", true)
-    d3.selectAll("#timeline .exp-"+exp.id).classed("focus", true)
+    cv.unselectAll()
+    d3.select('[data-id="'+exp.id+'"]').classed("focus", true)
+    d3.select(cv.selectors.skills).classed("filtered", true)
+    d3.selectAll(cv.selectors.timeline+" .exp-"+ exp.id).classed("focus", true)
     exp._skills.forEach(function(skill) {
       d3.select("#skill-" + skill.id).classed("focus", true)
     })
     cv.renderDetails(exp)
   }
 
+
+  cv.unselectAll = function() {
+    d3.select(cv.selectors.experience).classed("filtered", false)
+    d3.select(cv.selectors.skills).classed("filtered", false)
+    d3.selectAll(".focus").classed("focus", false)
+    $(cv.selectors.details).html("")
+  }
+
   cv.selectSkill = function(skill) {
-    d3.select("#explist").classed("filtered", true)
-    skill._exp.forEach(function(exp) {
-      d3.select("#exp-" + exp.id).classed("focus", true)
-    })
+    // d3.select("#explist").classed("filtered", true)
+    // skill._exp.forEach(function(exp) {
+    //   d3.select("#exp-" + exp.id).classed("focus", true)
+    // })
   }
 
   cv.unselectExp = function(exp) {
-    d3.select("#tagcloud").classed("filtered", false)
-    d3.selectAll(".focus").classed("focus", false)
+    // d3.select("#cv-skills").classed("filtered", false)
+    // d3.selectAll(".focus").classed("focus", false)
   }
 
   cv.unselectSkill = function(skill) {
-    d3.select("#explist").classed("filtered", false)
-    d3.selectAll(".focus").classed("focus", false)
+    // d3.select("#explist").classed("filtered", false)
+    // d3.selectAll(".focus").classed("focus", false)
+  }
+
+  var createCanvas = function(selector) {
+    var root = d3.select(selector)
+    if(!root.node()) {
+      console.log("Failed to find selector: " + selector)
+      return null
+    }
+
+    root.select("svg").remove()
+    var width = root.node().clientWidth
+    var height = root.node().clientHeight
+    console.log(selector + " SVG size: " + width + ", " + height)
+
+    var svg = root.append("svg:svg")
+      .attr("width", width)
+      .attr("height", height)
+    return { svg: svg, width: width, height: height }
   }
 
   return cv
@@ -245,5 +234,10 @@ var CV = (function () {
 
 jQuery(document).ready(function ($) {
     $(window).stellar();
-    window.cv = CV.init("#cv-vis")
+    window.cv = CV.init({
+      experience: "#cv-exp",
+      skills:     "#cv-skills",
+      timeline:   "#cv-timeline",
+      details:    "#cv-details"
+    })
 });

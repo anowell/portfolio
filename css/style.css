@@ -194,9 +194,12 @@ a:visited {
 #tools: {
 }
 
-#cv-vis {
-  /*border: 1px solid gray;*/
-  height:380px;
+/*#cv-skills, #cv-timeline, #cv-details, #cv-exp {
+  border: 1px solid gray;
+}*/
+
+#cv-skills {
+  height:360px;
   cursor: default;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -206,8 +209,12 @@ a:visited {
   user-select: none;
 }
 
-#timeline {
+#cv-timeline {
+  height: 110px
+}
 
+#cv-details {
+  height: 240px;
 }
 
 .axis line,
@@ -222,31 +229,33 @@ text {
   font-family: 'Open Sans', sans-serif;
 }
 
-.node {
-  cursor: default;
-  font-color: gray;
-}
-
 .exp {
   font-size: 1.5em;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
 }
 
+.exp:hover, .exp.focus {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
 
 .skill {
   font-size: 1.2em;
 }
 
 
-#tagcloud text {
+#cv-skills text {
   transition: fill-opacity 300ms ease;
-  cursor: pointer;
 }
 
-#tagcloud text:hover {
+/*#cv-skills:not(.filtered) text:hover,
+#cv-skills.filtered text.focus:hover {
   text-decoration:  underline;
-}
+}*/
 
-#tagcloud.filtered text:not(.focus) {
+#cv-skills.filtered text:not(.focus) {
   /*fill: #f4f4f4;*/
   fill-opacity: 0.08;
 }
@@ -275,26 +284,21 @@ text {
   fill: #424f55;
 }
 
-#explist rect {
-  fill-opacity: 0;
-}
 
-#explist :hover line {
-  stroke: #A7A9AB;
-}
-
-#explist text {
+#cv-exp {
   transition: fill-opacity 400ms ease, fill 400ms ease;
   font-weight: bold;
-  fill: #8A8683;
+  line-height: 60px;
+  text-align: right;
+  /*fill: #8A8683;*/
 }
 
-#explist.filtered :not(.focus) text {
-  fill: #f4f4f4;
+#explist.filtered :not(.focus) {
+  color: #f4f4f4;
 }
 
-#explist.filtered .focus text {
-  fill: gray;
+#explist.filtered .focus {
+  color: gray;
 }
 
 #timeline rect:not(.focus) {
@@ -305,10 +309,8 @@ text {
   fill-opacity:1;
 }
 
-#cv-info {
-  height: 240px;
-}
-#cv-info .description {
+
+#cv-details .description {
   font-style: italic;
 }
 

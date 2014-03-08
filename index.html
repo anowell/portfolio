@@ -76,18 +76,21 @@
       <p class="todo">Note: this is a work-in-progress</p>
       <p style="text-align: right;">
         Redraw: 
-        <a href="#" onclick="cv.drawSkills(0, 1); return false;   ">simple</a> |
-        <a href="#" onclick="cv.drawSkills(45, 2); return false;  ">zigzag</a> |
-        <a href="#" onclick="cv.drawSkills(45, 3); return false;  ">mixup</a>
+        <a href="#" onclick="cv.renderSkills(0, 1); return false;   ">simple</a> |
+        <a href="#" onclick="cv.renderSkills(45, 2); return false;  ">zigzag</a> |
+        <a href="#" onclick="cv.renderSkills(45, 3); return false;  ">mixup</a>
       </p>
     </div>
 
-    <div class="container clearfix">
-      <div class="grid_12 omega">
-        <div id="cv-vis"></div>
+    <div id="cv" class="container clearfix">
+      <div class="grid_3">
+        <div id="cv-exp"></div>
       </div>
-      <div class="grid_3">&nbsp;</div>
-      <div id="cv-info" class="grid_9 omega">&nbsp;</div>
+      <div class="grid_9 omega">
+        <div id="cv-skills"></div>
+        <div id="cv-timeline"></div>
+        <div id="cv-details"></div>
+      </div>
     </div>
   </div>
 
