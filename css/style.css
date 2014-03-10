@@ -214,7 +214,7 @@ a:visited {
 }
 
 #cv-details {
-  height: 240px;
+  height: 100px;
 }
 
 .axis line,
@@ -310,9 +310,25 @@ text {
 }
 
 
+#cv-details h3 {
+  margin-top: 0;
+}
 #cv-details .description {
   font-style: italic;
 }
+
+
+
+.refresh-icon {
+    cursor: pointer;
+}
+.refresh-icon path {
+  fill: #8A8683;
+}
+.refresh-icon:hover path {
+  fill: #424f55;
+}
+
 
 /* Slide 4 */ 
 

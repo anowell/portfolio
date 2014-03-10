@@ -125,6 +125,36 @@ var CV = (function () {
                 .text(function(d) { return d.text; })
                 // .on("mouseover", function(word) { return cv.selectSkill.call(this, word.ref) })
                 // .on("mouseout", function(word) { return cv.unselectSkill.call(this, word.ref) })
+
+      var iconSize = 40
+      var refresh = canvas.svg.append("svg:svg")
+        .attr("class", "refresh-icon")
+        .attr("width", iconSize)
+        .attr("x", canvas.width-iconSize)
+        .attr("y", -(canvas.height-iconSize)/2)
+        .attr("viewBox", "0 0 480 480")
+      refresh.append("rect")
+        .attr("width", 480)
+        .attr("height", 480)
+        .attr("fill-opacity", 0)
+      refresh.append("path")
+          .attr("d", "M160.469,242.194c0-44.414,36.023-80.438,80.438-80.438c19.188,0,36.711,6.844,50.5,18.078L259.78,209.93l99.945,11.367 \
+                      l0.805-107.242l-30.766,29.289c-23.546-21.203-54.624-34.164-88.804-34.164c-73.469,0-133.023,59.562-133.023,133.016 \
+                      c0,2.742,0.242-2.266,0.414,0.445l53.68,7.555C161.03,245.108,160.469,247.562,160.469,242.194z M371.647,237.375l-53.681-7.555 \
+                      c1.017,5.086,1.556,2.617,1.556,7.992c0,44.414-36.008,80.431-80.43,80.431c-19.133,0-36.602-6.798-50.383-17.97l31.595-30.078 \
+                      l-99.93-11.366l-0.812,107.25l30.789-29.312c23.531,21.141,54.57,34.055,88.688,34.055c73.468,0,133.023-59.555,133.023-133.008 \
+                      C372.062,235.078,371.812,240.085,371.647,237.375z")
+      refresh.on("click", function(evt) {
+        cv.unselectAll()
+        switch( ~~(3*Math.random()) ) {
+          case 0:
+            return cv.renderSkills(0, 1)
+          case 1:
+            return cv.renderSkills(45, 2)
+          default:
+            return cv.renderSkills(45, 3)
+        }
+      })
     }
 
     // Consider adding an element, get its style, then remove it
