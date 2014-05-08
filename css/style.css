@@ -4,22 +4,19 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-size: 1em;
-  color: #8a8683;
-  background-color:#ffffff;
+  color: #515151;
+  background-color:#eee;
+  background-image:url('../images/handmadepaper.png');
 }
 img {
   max-width: 100%;
 }
-a:link {
-  color: #f68f67;
+a:link, a:visited {
+  color: #347ec2;
   text-decoration: none;
 }
 a:hover {
-  color: #bde2df;
-  text-decoration: none;
-}
-a:visited {
-  color: #f68f67;
+  color: #005db1;
   text-decoration: none;
 }
 
@@ -36,17 +33,18 @@ a:visited {
 .menu {
   position:fixed;
   top:0px;
-  width:100%; 
-  height:auto; 
-  background-color:#ffffff;
-  z-index:100;
+  width:100%;
+  height:auto;
+  background-image:url('../images/handmadepaper.png');  z-index:100;
+  border-bottom: 1px solid #ccc;
 }
 #logo {
   text-align: center;
   margin: 30px 0 0 0;
-  font-size: 1.5em;
-  color: #f68f67;
-  font-weight:bold;
+  font-size: 1.8em;
+  color: #347ec2;
+  font-weight: bold;
+  text-shadow: 1px 1px #ddd;
 }
 #nav {
   text-align: right;
@@ -75,7 +73,7 @@ a:visited {
 
 
 
-/* General Slides */ 
+/* General Slides */
 
 .slide{
   background-attachment: fixed;
@@ -88,21 +86,24 @@ a:visited {
 .slide h1 {
   font-size: 3.8em;
   letter-spacing: -3px;
-  color:#8a8683;
+  color:#347ec2;
   font-weight: 700;
+  text-shadow: 1px 1px #ddd;
 }
-.slide3 h2 {
+
+.slide h2, #mantra {
   font-size: 2em;
-  color: #8a8683;
-  padding-bottom:20px;
+  color: #347ec2;
   font-weight: 400;
+  font-weight:bold;
+  text-shadow: 1px 1px #ddd;
+  margin-bottom: 40px;
 }
 
 
-/* Slide 1 */ 
+/* Slide 1 */
 
 #slide1{
-  background-color:#fff;
   padding:120px 0;
 }
 #profile {
@@ -113,8 +114,9 @@ a:visited {
 #profile img {
   width: 160px;
   border-radius: 80px;
-  border: 4px solid #8A8683;
+  /*border: 2px solid #515151;*/
   margin-bottom: 12px;
+  box-shadow: 0 0 2px 2px #515151;
 }
 
 #frontpage {
@@ -124,17 +126,12 @@ a:visited {
 
 #mantra {
   margin-top: 40px;
-  margin-bottom: 40px;
-  font-size: 2em;
-  color: #8a8683;
-  padding-bottom:20px;
-  font-weight: 400;
 }
 
 #profile:after, #frontpage:after {
-  content:''; 
-  width:40px; 
-  height:40px; 
+  content:'';
+  width:40px;
+  height:40px;
   position:absolute;
   border-style: solid;
   border-width: 0;
@@ -153,7 +150,7 @@ a:visited {
   left:0px;
 }
 
-/* Slide 2 */ 
+/* Slide 2 */
 
 #slide2{
   background-image:url('../images/spectacular_seattle-1920x1200.jpg');
@@ -166,15 +163,13 @@ a:visited {
 
 
 
-/* Slide 3 */ 
+/* Slide 3 */
 
 #skills ul {
-  list-style: none;  
+  list-style: none;
 }
 
 #slide3{
-  background-color:#ffffff;
-  /*padding-bottom: 20px;*/
 }
 
 #slide3 h2 {
@@ -199,7 +194,7 @@ a:visited {
 }*/
 
 #cv-skills {
-  height:360px;
+  height:320px;
   cursor: default;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -261,11 +256,11 @@ text {
 }
 
 .tool {
-  fill: #52a8da;
+  fill: #347ec2;
 }
 
 .language {
-  fill: #ec6d6d;
+  fill: #e65252;
 }
 
 .principle {
@@ -281,7 +276,7 @@ text {
 }
 
 .principle:hover {
-  fill: #424f55;
+  fill: #515151;
 }
 
 
@@ -330,19 +325,29 @@ text {
 }
 
 
-/* Slide 4 */ 
+/* Slide 4 */
 
 #slide4{
   background-color: #8A8683;
+  background-image:url('../images/dark_geometric.png');
   color: white;
-  padding: 70px 0;
+  padding: 40px 0;
   text-align: center;
 }
 
-/* Slide 5 */ 
+#slide4 .container {
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#slide4 img{
+  height: 140px;
+}
+
+/* Slide 5 */
 
 #slide5{
-  background-color:#ffffff;
   text-align: center;
 }
 
@@ -438,7 +443,3 @@ text {
   position: relative;
   padding:150px 0;
 }
-
-
-
-
