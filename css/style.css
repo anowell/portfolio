@@ -153,10 +153,10 @@ a:hover {
 /* Slide 2 */
 
 #slide2{
+  background-color:#212121;
   background-image:url('../images/spectacular_seattle-1920x1200.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-color:#f68f67;
   color:#ffffff;
   height: 160px;
 }
@@ -328,7 +328,7 @@ text {
 /* Slide 4 */
 
 #slide4{
-  background-color: #8A8683;
+  background-color: #212121;
   background-image:url('../images/dark_geometric.png');
   color: white;
   padding: 40px 0;
@@ -355,10 +355,10 @@ text {
 /* Slide 6 */
 
 #slide6{
+  background-color:#212121;
   background-image:url('../images/shore-1920.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-color:#8a8683;
   color:#ffffff;
   padding-bottom: 400px;
 }
