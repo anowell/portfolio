@@ -4,7 +4,7 @@
       "name": "Socrata",
       "title": "Software Engineer",
       "times": [{"start": "2013-03-25", "end": null}],
-      "skills": ["Ruby", "Javascript", "Coffeescript", "Java", "CSS/Sass", "Python", "SQL",
+      "skills": ["Ruby", "Javascript", "Coffeescript", "Java", "CSS/Sass", "Python", "SQL", "Scala",
                   "NodeJS", "BackboneJS", "Git", "Chef", "Sensu", "PostgreSQL", "Agile"],
       "accomplishments": [
         "Developed automation to launch entire stack on Azure",
@@ -90,6 +90,7 @@
       { "type": "language", "name": "Python", "weight": 1 },
       { "type": "language", "name": "C#", "weight": 1 },
       { "type": "language", "name": "C/C++", "weight": 2 },
+      { "type": "language", "name": "Scala", "weight": 1 },
       { "type": "language", "name": "SQL", "weight": 2 },
       { "type": "tool", "name": "Rails", "weight": 3 },
       { "type": "tool", "name": "NodeJS", "weight": 3 },
