@@ -5,7 +5,7 @@
       "title": "Software Engineer",
       "times": [{"start": "2013-03-25", "end": null}],
       "skills": ["Ruby", "Javascript", "Coffeescript", "Java", "CSS/Sass", "Python", "SQL", "Scala",
-                  "NodeJS", "BackboneJS", "Git", "Chef", "Sensu", "PostgreSQL", "Agile"],
+                  "NodeJS", "BackboneJS", "Git", "Azure", "AWS", "Chef", "Sensu", "PostgreSQL", "Agile"],
       "accomplishments": [
         "Developed automation to launch entire stack on Azure",
         "Implemented Sensu monitoring across physical datacenters and Azure",
@@ -19,7 +19,7 @@
       "title": "Co-creator",
       "times": [{"start": "2012-02-01", "end": null}],
       "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass", "SQL",
-                  "Rails", "REST", "MVC", "Git", "Docker", "Heroku", "PostgreSQL", "TDD"],
+                  "Rails", "REST", "MVC", "Git", "Docker", "Heroku", "AWS", "PostgreSQL", "TDD"],
       "description": "[Lestanza](http://lestanza.com) is Spanish CRM web app to facilitate daycare management in Mexico",
       "accomplishments": [
         "Designed, implemented, tested, deployed, and maintained a Rails production web app on Heroku leveraging PostgreSQL"
@@ -103,10 +103,12 @@
       { "type": "tool", "name": "Chef", "weight": 2 },
       { "type": "tool", "name": "Sensu", "weight": 2 },
       { "type": "tool", "name": "Docker", "weight": 2 },
+      { "type": "tool", "name": "AWS", "weight": 2 },
+      { "type": "tool", "name": "Azure", "weight": 2 },
       { "type": "tool", "name": "Heroku", "weight": 2 },
       { "type": "tool", "name": "PostgreSQL", "weight": 2 },
       { "type": "tool", "name": "MongoDB", "weight": 1 },
       { "type": "tool", "name": "d3", "weight": 1 },
       { "type": "tool", "name": "Photoshop", "weight": 1 }
-  ]    
+  ]
 }
