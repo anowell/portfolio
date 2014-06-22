@@ -1,7 +1,7 @@
 Portfolio
 =========
 
-That's right. An open-sourced, [data-driven](blob/master/cv.json) portfolio.
+That's right. An open-sourced, [data-driven](cv.json) portfolio.
 
 http://anowell.github.io/portfolio/
 
