@@ -6,7 +6,6 @@ body {
   font-size: 1em;
   color: #515151;
   background-color:#eee;
-  background-image:url('../images/handmadepaper.png');
 }
 img {
   max-width: 100%;
@@ -35,7 +34,8 @@ a:hover {
   top:0px;
   width:100%;
   height:auto;
-  background-image:url('../images/handmadepaper.png');  z-index:100;
+  background-color:#eee;
+  z-index:90;
   border-bottom: 1px solid #ccc;
 }
 #logo {
@@ -116,7 +116,7 @@ a:hover {
   border-radius: 80px;
   /*border: 2px solid #515151;*/
   margin-bottom: 12px;
-  box-shadow: 0 0 2px 2px #515151;
+  box-shadow: 0 0 1px 1px #515151;
 }
 
 #frontpage {
@@ -124,8 +124,16 @@ a:hover {
   text-align: center;
 }
 
+a.tooltip {
+  cursor: default;
+}
+
+a.tooltip:hover {
+  text-decoration: overline underline;
+}
+
 #mantra {
-  margin-top: 40px;
+  /*margin-top: 20px;*/
 }
 
 #profile:after, #frontpage:after {
@@ -137,18 +145,6 @@ a:hover {
   border-width: 0;
 }
 
-#profile:after {
-  border-width: 0 4px 4px 0;
-  bottom:0px;
-  right:0px;
-}
-
-#frontpage:after {
-  border-width: 4px 0 0 4px;
-  position:absolute;
-  top:0px;
-  left:0px;
-}
 
 /* Slide 2 */
 
@@ -348,9 +344,31 @@ text {
 /* Slide 5 */
 
 #slide5{
+  /*padding: 80px 0px;*/
   text-align: center;
+  font-size: 2em;
+  letter-spacing: -1px;
 }
 
+#slide5 .container {
+  max-width: 90%;
+}
+
+quote {
+  display: block;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  /*color: gray;*/
+}
+
+cite {
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  display: block;
+  text-align: right;
+  text-transform: uppercase;
+  color: #CCC;
+}
 
 /* Slide 6 */
 
@@ -359,9 +377,9 @@ text {
   background-image:url('../images/shore-1920.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  color:#ffffff;
-  padding-bottom: 400px;
+  padding-bottom: 220px;
 }
+
 
 
 

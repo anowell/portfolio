@@ -1,8 +1,9 @@
 Portfolio
 =========
 
-http://anowell.github.io/portfolio/
+That's right. An open-sourced, [data-driven](blob/master/cv.json) portfolio.
 
+http://anowell.github.io/portfolio/
 
 
 

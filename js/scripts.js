@@ -264,6 +264,7 @@ var CV = (function () {
 
 jQuery(document).ready(function ($) {
     $(window).stellar();
+    $('.tooltip').tooltipster({position:'top'});
     window.cv = CV.init({
       experience: "#cv-exp",
       skills:     "#cv-skills",
