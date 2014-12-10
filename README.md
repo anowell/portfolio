@@ -6,6 +6,13 @@ That's right. An open-sourced, [data-driven](cv.json) portfolio.
 http://anowell.github.io/portfolio/
 
 
+Testing
+-------
+
+Spin up nginx behind `localhost:8080` in a docker container:
+
+    docker run -p 8080:80 --rm -it -v `pwd`:/usr/share/nginx/html:ro nginx
+
 
 Acknowledgments
 ---------------
