@@ -77,6 +77,11 @@ var CV = (function () {
       .attr("id", "timeline")
       .datum(timelineData)
       .call(chart)
+      .on("dblclick.zoom", null)
+      .on("mousewheel.zoom", null)
+      .on("DOMMouseScroll.zoom", null)
+      .on("wheel.zoom", null);
+
   }
 
   cv.renderExp = function() {
