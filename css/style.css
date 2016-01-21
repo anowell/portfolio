@@ -47,8 +47,13 @@ a:hover {
   text-shadow: 1px 1px #ddd;
 }
 #nav {
+  font-size: 1.4em;
+  word-spacing: 20px;
   text-align: right;
   margin: 30px 0 0 0;
+}
+#nav i {
+  vertical-align: bottom;
 }
 .navigation{
   float: right;
