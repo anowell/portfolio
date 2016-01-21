@@ -69,16 +69,21 @@
   ],
   "education": [
     {
-      "name": "Iowa State",
-      "times": [{"start": "2003-09-01", "end": "2008-12-12"}],
-      "skills": ["C++", "Java", "VHDL", "Verilog", "MIPS",
-                  "FPGA", "Embedded Systems"],
+      "institution": "Iowa State University",
+      "studyType": "Bachelor",
+      "area": "Computer Engineering",
+      "startDate": "2003-09-01",
+      "endDate": "2008-12-12",
+      "skills": ["C++", "Java", "VHDL", "Verilog", "MIPS", "FPGA", "Embedded Systems"],
       "description": "Graduated with B.S. in Computer Engineering"
     },
     {
-      "name": "Tec de Monterrey",
-      "times": [{"start": "2007-08-13", "end": "2007-12-14"}],
-      "skills": ["Spanish", "Embedded Systems"],
+      "institution": "Tec de Monterrey",
+      "studyType": "Study Abroad",
+      "area": "Computer Engineering and Spanish",
+      "startDate": "2007-08-13",
+      "endDate": "2007-12-14",
+      "skills": ["Spanish", "Embedded Systems", "Networking"],
       "description": "Semester Abroad - Fluent in Spanish"
     }
   ],
