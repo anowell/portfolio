@@ -157,8 +157,6 @@ var CV = (function () {
           default:
             cv.renderSkills(45, 3)
         }
-        var activeId = d3.select('.exp.focus').attr('data-id')
-        cv.selectExp(experiences[activeId])
       })
     }
 
@@ -176,6 +174,11 @@ var CV = (function () {
       .fontWeight("bold")
       .on("end", renderWords)
       .start()
+
+    var active = d3.select('.exp.focus')
+    if(!active.empty()) {
+      cv.selectExp(experiences[active.attr('data-id')])
+    }
   }
 
   cv.markdown = function(text) {
@@ -277,4 +280,9 @@ jQuery(document).ready(function ($) {
       timeline:   "#cv-timeline",
       details:    "#cv-details"
     })
+});
+
+jQuery(window).resize(function() {
+    window.cv.renderSkills(45, 3)
+    window.cv.renderTimeline()
 });
