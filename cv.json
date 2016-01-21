@@ -29,10 +29,11 @@
       "position": "Senior Software Engineer",
       "startDate": "2015-01-26",
       "endDate": null,
+      "website": "http://algorithmia.com",
       "skills": ["Scala", "Java", "Coffeescript", "Javascript", "Rust", "CSS/Sass",
                   "Docker", "AWS", "MySQL", "RDS", "Ansible",
                   "Team Building", "User Experience", "Project Management", "Community Building"],
-      "summary": "[Algorithmia](http://algorithmia.com) empowers entrepreneurs and engineers to leverage cutting-edge algorithm research to build the future.",
+      "summary": "Algorithmia empowers entrepreneurs and engineers to leverage cutting-edge algorithm research to build the future.",
       "highlights": [
           "In true startup fashion, my contributions are all over the map. I take all credit for basically nothing, but rather share credit with an excellent team for building Algorithmia from a seed-invested private beta stage to a growing platform that powers a new generation of smarter applications. I've had a hand in operational planning and evolution, scoping and building significant parts of the product, promoting great culture, overhauling user experience, growing the team, and much more. And I've accomplished much of this remotely."
       ]
@@ -42,10 +43,11 @@
       "position": "Co-creator",
       "startDate": "2012-02-01",
       "endDate": null,
+      "website": "http://lestanza.com",
       "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass",
                   "Rails", "REST", "MVC", "Docker", "Heroku", "AWS", "PostgreSQL", "RDS", "CloudFormation", "Ansible", "TDD",
                   "User Experience"],
-      "description": "[Lestanza](http://lestanza.com) empowers daycares to focus on childcare instead of administration.",
+      "description": "Lestanza empowers daycares to focus on childcare instead of administration.",
       "highlights": [
         "Designed, implemented, tested, deployed, and maintained a Rails production web app to facilitate daycare management in Mexico",
         "Migrated app from Heroku to AWS leveraging docker, ansible, CloudFormation, EC2, and RDS"
@@ -56,6 +58,7 @@
       "position": "Software Engineer II",
       "startDate": "2013-03-25",
       "endDate": "2015-01-24",
+      "website": "http://socrata.com",
       "skills": ["Ruby", "Javascript", "Coffeescript", "Java", "CSS/Sass", "Python", "Scala",
                   "NodeJS", "BackboneJS", "Docker", "Azure", "AWS", "CloudFormation", "Chef", "Sensu", "PostgreSQL", "Agile",
                   "Team Building"],
@@ -75,6 +78,7 @@
       "position": "Software Design Engineer in Test 2",
       "startDate": "2009-01-26",
       "endDate": "2013-03-21",
+      "website": "http://microsoft.com",
       "skills": ["C/C++", "C#",
                   "TDD", "Agile"],
       "highlights": [

@@ -182,7 +182,8 @@ var CV = (function () {
 
   cv.renderDetails = function(exp) {
     var html = []
-    var title = (exp.position) ? (exp.position+' at '+exp.company) : exp.company
+    var company = (exp.website) ? '<a href="'+exp.website+'">'+exp.company+'</a>' : exp.company
+    var title = (exp.position) ? (exp.position+' at '+company) : company
     html.push('<h3 class="title">' + title + '</h3>')
 
     if(exp.summary) {
