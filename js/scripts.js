@@ -49,11 +49,12 @@ var CV = (function () {
           timelineData.push({"times": times})
         })
 
-        $("#cv").mouseleave(cv.unselectAll)
+        //$("#cv").mouseleave(cv.unselectAll)
 
         cv.renderExp()
         cv.renderSkills(45, 3)
         cv.renderTimeline()
+        cv.selectExp(experiences[0])
       })
 
       return cv
@@ -64,7 +65,10 @@ var CV = (function () {
 
     var chart = d3.timeline()
       .width(canvas.width)
-      .margin({left:5, right:5, top:30, bottom:30})
+      .itemHeight(10)
+      .itemMargin(-15)
+      .orient("top")
+      .margin({left:15, right:15, top:30, bottom:0})
       .colors(d3.scale.category10())
       .tickFormat({
         format: d3.time.format("%Y"),
@@ -126,7 +130,7 @@ var CV = (function () {
                 // .on("mouseover", function(word) { return cv.selectSkill.call(this, word.ref) })
                 // .on("mouseout", function(word) { return cv.unselectSkill.call(this, word.ref) })
 
-      var iconSize = 40
+      var iconSize = 32
       var refresh = canvas.svg.append("svg:svg")
         .attr("class", "refresh-icon")
         .attr("width", iconSize)
@@ -145,15 +149,16 @@ var CV = (function () {
                       l-99.93-11.366l-0.812,107.25l30.789-29.312c23.531,21.141,54.57,34.055,88.688,34.055c73.468,0,133.023-59.555,133.023-133.008 \
                       C372.062,235.078,371.812,240.085,371.647,237.375z")
       refresh.on("click", function(evt) {
-        cv.unselectAll()
         switch( ~~(3*Math.random()) ) {
           case 0:
-            return cv.renderSkills(0, 1)
+            cv.renderSkills(0, 1)
           case 1:
-            return cv.renderSkills(45, 2)
+            cv.renderSkills(45, 2)
           default:
-            return cv.renderSkills(45, 3)
+            cv.renderSkills(45, 3)
         }
+        var activeId = d3.select('.exp.focus').attr('data-id')
+        cv.selectExp(experiences[activeId])
       })
     }
 
@@ -162,7 +167,7 @@ var CV = (function () {
     d3.layout.cloud()
       .size([canvas.width, canvas.height])
       .words(skills.map(function(s){
-        return { text: s.name, size: Math.pow(1.8,s.weight)*8, ref: s }
+        return { text: s.name, size: Math.pow(1.4,s.weight)*9, ref: s }
       }))
       .padding(3)
       .rotate(function(d) { return steps <= 1 ? maxAngle : ~~(Math.random() * steps) * maxAngle * 2 / (steps-1) - maxAngle; })

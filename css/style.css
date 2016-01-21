@@ -195,7 +195,7 @@ a.tooltip:hover {
 }*/
 
 #cv-skills {
-  height:320px;
+  height:160px;
   cursor: default;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -206,7 +206,7 @@ a.tooltip:hover {
 }
 
 #cv-timeline {
-  height: 110px
+  height: 60px
 }
 
 #cv-details {
@@ -253,7 +253,7 @@ text {
 
 #cv-skills.filtered text:not(.focus) {
   /*fill: #f4f4f4;*/
-  fill-opacity: 0.08;
+  fill-opacity: 0.12;
 }
 
 .tool {
@@ -261,23 +261,26 @@ text {
 }
 
 .language {
-  fill: #e65252;
+  fill: #8A8683;
 }
 
 .principle {
-  fill: #8A8683;
+  fill: #3CA745;
 }
 
 .tool:hover {
   fill: #005db1;
+  fill-opacity: 1 !important;
 }
 
 .language:hover {
-  fill: #cf0005;
+  fill: #515151;
+  fill-opacity: 1 !important;
 }
 
 .principle:hover {
-  fill: #515151;
+  fill: #287E2F;
+  fill-opacity: 1 !important;
 }
 
 
@@ -320,6 +323,7 @@ text {
 }
 .refresh-icon path {
   fill: #8A8683;
+  fill-opacity: 0.5;
 }
 .refresh-icon:hover path {
   fill: #424f55;
