@@ -1,38 +1,65 @@
 {
-  "experiences" : [
+  "basics" : {
+    "name": "Anthony Nowell",
+    "label": "Senior Software Engineer",
+    "email": "anowell@gmail.com",
+    "website": "http://anowell.com",
+    "summary": "Build stuff. Care about people.",
+    "location": {
+      "city": "Mazatlán",
+      "countryCode": "MX",
+      "region": "Sinaloa"
+    },
+    "profiles": [
+      {
+        "network": "Twitter",
+        "username": "atnowell",
+        "url": "https://twitter.com/atnowell"
+      },
+      {
+        "network": "GitHub",
+        "username": "anowell",
+        "url": "https://github.com/anowell"
+      }
+    ]
+  },
+  "work" : [
     {
-      "name": "Algorithmia",
-      "title": "Senior Software Engineer",
-      "times": [{"start": "2015-01-26", "end": null}],
+      "company": "Algorithmia",
+      "position": "Senior Software Engineer",
+      "startDate": "2015-01-26",
+      "endDate": null,
       "skills": ["Scala", "Java", "Coffeescript", "Javascript", "Rust", "CSS/Sass",
                   "Docker", "AWS", "MySQL", "RDS", "Ansible",
                   "Team Building", "User Experience", "Project Management", "Community Building"],
-      "description": "[Algorithmia](http://algorithmia.com) empowers entrepreneurs and engineers to leverage cutting-edge algorithm research to build the future.",
-      "accomplishments": [
+      "summary": "[Algorithmia](http://algorithmia.com) empowers entrepreneurs and engineers to leverage cutting-edge algorithm research to build the future.",
+      "highlights": [
           "In true startup fashion, my contributions are all over the map. I take all credit for basically nothing, but rather share credit with an excellent team for building Algorithmia from a seed-invested private beta stage to a growing platform that powers a new generation of smarter applications. I've had a hand in operational planning and evolution, scoping and building significant parts of the product, promoting great culture, overhauling user experience, growing the team, and much more. And I've accomplished much of this remotely."
       ]
     },
     {
-      "name": "Lestanza",
-      "title": "Co-creator",
-      "times": [{"start": "2012-02-01", "end": null}],
+      "company": "Lestanza",
+      "position": "Co-creator",
+      "startDate": "2012-02-01",
+      "endDate": null,
       "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass",
                   "Rails", "REST", "MVC", "Docker", "Heroku", "AWS", "PostgreSQL", "RDS", "CloudFormation", "Ansible", "TDD",
                   "User Experience"],
       "description": "[Lestanza](http://lestanza.com) empowers daycares to focus on childcare instead of administration.",
-      "accomplishments": [
+      "highlights": [
         "Designed, implemented, tested, deployed, and maintained a Rails production web app to facilitate daycare management in Mexico",
         "Migrated app from Heroku to AWS leveraging docker, ansible, CloudFormation, EC2, and RDS"
       ]
     },
     {
-      "name": "Socrata",
-      "title": "Software Engineer II",
-      "times": [{"start": "2013-03-25", "end": "2015-01-24"}],
+      "company": "Socrata",
+      "position": "Software Engineer II",
+      "startDate": "2013-03-25",
+      "endDate": "2015-01-24",
       "skills": ["Ruby", "Javascript", "Coffeescript", "Java", "CSS/Sass", "Python", "Scala",
                   "NodeJS", "BackboneJS", "Docker", "Azure", "AWS", "CloudFormation", "Chef", "Sensu", "PostgreSQL", "Agile",
                   "Team Building"],
-      "accomplishments": [
+      "highlights": [
         "Contributed to mentorship and recruitment of SDEs, SREs, and SDETs",
         "Led the adoption of docker and established patterns for dockerized service in AWS via Mesos",
         "Implemented CI pipeline and process improvements for configuration management",
@@ -44,23 +71,24 @@
       ]
     },
     {
-      "name": "Microsoft",
-      "title": "Software Design Engineer in Test 2",
-      "times": [{"start": "2009-01-26", "end": "2013-03-21"}],
+      "company": "Microsoft",
+      "position": "Software Design Engineer in Test 2",
+      "startDate": "2009-01-26",
+      "endDate": "2013-03-21",
       "skills": ["C/C++", "C#",
                   "TDD", "Agile"],
-      "accomplishments": [
+      "highlights": [
         "*System Center Configuration Manager*: Drove software distribution test strategy and security compliance for write filter aware clients",
         "*Windows Core Storage*: Developed Windows 7 storage certification tools relating to SSDs, Storage Controllers, and Data Integrity",
         "*Intern Social Coordinator*: Coordinated and facilitated intern events throughout the summer"
       ]
     },
     {
-      "name": "Just for fun",
+      "company": "Just for fun",
       "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass", "Rust",
                 "NodeJS", "Rails", "BackboneJS", "MongoDB", "REST", "Photoshop", "d3"],
-      "description": "I seem to always have a project on the back-burner - often to experiment with new technology",
-      "accomplishments": [
+      "summary": "I seem to always have a project on the back-burner - often to experiment with new technology",
+      "highlights": [
         "*Lestanza*: Lestanza started in this category, and grew into project with business aspirations",
         "*[PrayerCloud](http://github.com/anowell/prayercloud-web)*: A proof-of-concept app to manage prayer lists; my first stab at Node.js, Express.js, Backbone.js, MongoDB, and even Photoshop",
         "*My Portfolio*: This very portfolio was an excuse to experiment with d3 and parallax design; did I mention it's [data-driven](http://github.com/anowell/portfolio/blob/gh-pages/cv.json)"

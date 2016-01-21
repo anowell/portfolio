@@ -11,7 +11,7 @@ var CV = (function () {
       d3.json("cv.json", function(err, json) {
         if(err) { return console.log(error) }
 
-        experiences = json.experiences
+        experiences = json.work
         skills = json.skills
 
         // Build the object references between skills and experiences:
@@ -40,18 +40,13 @@ var CV = (function () {
           return (dateStr) ? d3.time.format("%Y-%m-%d").parse(dateStr) : todayTime
         }
         experiences.forEach(function(experience, i) {
-          if(!experience.times) { return }
-          var times = []
-          experience.times.forEach(function(time) {
-            times.push({
-              "class": "exp-"+i,
-              "starting_time": parseDateToTime(time.start),
-              "ending_time": parseDateToTime(time.end)
-            })
-          })
-          if(times.length > 0) {
-            timelineData.push({"times": times})
-          }
+          if(!experience.startDate) { return }
+          var times = [{
+            "class": "exp-"+i,
+            "starting_time": parseDateToTime(experience.startDate),
+            "ending_time": parseDateToTime(experience.endDate)
+          }]
+          timelineData.push({"times": times})
         })
 
         $("#cv").mouseleave(cv.unselectAll)
@@ -86,7 +81,7 @@ var CV = (function () {
 
   cv.renderExp = function() {
     var divs = experiences.map(function(exp, index) {
-      return '<div data-id="'+index+'" class="exp">'+exp.name+'</div>'
+      return '<div data-id="'+index+'" class="exp">'+exp.company+'</div>'
     })
 
     var withExp = function(handler) {
@@ -187,16 +182,16 @@ var CV = (function () {
 
   cv.renderDetails = function(exp) {
     var html = []
-    var title = (exp.title) ? (exp.title+' at '+exp.name) : exp.name
+    var title = (exp.position) ? (exp.position+' at '+exp.company) : exp.company
     html.push('<h3 class="title">' + title + '</h3>')
 
-    if(exp.description) {
-      html.push('<div class="description">' + cv.markdown(exp.description) + '</div>')
+    if(exp.summary) {
+      html.push('<div class="description">' + cv.markdown(exp.summary) + '</div>')
     }
 
-    if(exp.accomplishments) {
+    if(exp.highlights) {
       html.push('<ul class="accomplishments">')
-      exp.accomplishments.forEach(function(acc) {
+      exp.highlights.forEach(function(acc) {
         html.push('<li>' + cv.markdown(acc) + '</li>')
       })
       html.push('</ul>')
