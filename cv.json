@@ -4,16 +4,21 @@
       "name": "Algorithmia",
       "title": "Senior Software Engineer",
       "times": [{"start": "2015-01-26", "end": null}],
-      "skills": [],
+      "skills": ["Scala", "Java", "Coffeescript", "Javascript", "Rust", "CSS/Sass",
+                  "Docker", "AWS", "MySQL", "RDS", "Ansible",
+                  "Team Building", "User Experience", "Project Management", "Community Building"],
       "description": "[Algorithmia](http://algorithmia.com) empowers entrepreneurs and engineers to leverage cutting-edge algorithm research to build the future.",
-      "accomplishments": [ ]
+      "accomplishments": [
+          "In true startup fashion, my contributions are all over the map. I take all credit for basically nothing, but rather share credit with an excellent team for building Algorithmia from a seed-invested private beta stage to a growing platform that powers a new generation of smarter applications. I've had a hand in operational planning and evolution, scoping and building significant parts of the product, promoting great culture, overhauling user experience, growing the team, and much more. And I've accomplished much of this remotely."
+      ]
     },
     {
       "name": "Lestanza",
       "title": "Co-creator",
       "times": [{"start": "2012-02-01", "end": null}],
       "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass",
-                  "Rails", "REST", "MVC", "Docker", "Heroku", "AWS", "PostgreSQL", "RDS", "CloudFormation", "Ansible", "TDD"],
+                  "Rails", "REST", "MVC", "Docker", "Heroku", "AWS", "PostgreSQL", "RDS", "CloudFormation", "Ansible", "TDD",
+                  "User Experience"],
       "description": "[Lestanza](http://lestanza.com) empowers daycares to focus on childcare instead of administration.",
       "accomplishments": [
         "Designed, implemented, tested, deployed, and maintained a Rails production web app to facilitate daycare management in Mexico",
@@ -25,7 +30,8 @@
       "title": "Software Engineer II",
       "times": [{"start": "2013-03-25", "end": "2015-01-24"}],
       "skills": ["Ruby", "Javascript", "Coffeescript", "Java", "CSS/Sass", "Python", "Scala",
-                  "NodeJS", "BackboneJS", "Docker", "Azure", "AWS", "CloudFormation", "Chef", "Sensu", "PostgreSQL", "Agile"],
+                  "NodeJS", "BackboneJS", "Docker", "Azure", "AWS", "CloudFormation", "Chef", "Sensu", "PostgreSQL", "Agile",
+                  "Team Building"],
       "accomplishments": [
         "Contributed to mentorship and recruitment of SDEs, SREs, and SDETs",
         "Led the adoption of docker and established patterns for dockerized service in AWS via Mesos",
@@ -51,7 +57,7 @@
     },
     {
       "name": "Just for fun",
-      "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass",
+      "skills": ["Ruby", "Javascript", "Coffeescript", "CSS/Sass", "Rust",
                 "NodeJS", "Rails", "BackboneJS", "MongoDB", "REST", "Photoshop", "d3"],
       "description": "I seem to always have a project on the back-burner - often to experiment with new technology",
       "accomplishments": [
@@ -79,6 +85,8 @@
   "skills": [
       { "type": "principle", "name": "REST", "weight": 2 },
       { "type": "principle", "name": "TDD", "weight": 2 },
+      { "type": "principle", "name": "Team Building", "weight": 2 },
+      { "type": "principle", "name": "User Experience", "weight": 2 },
       { "type": "principle", "name": "Agile", "weight": 1 },
       { "type": "principle", "name": "Continuous Delivery", "weight": 1 },
       { "type": "principle", "name": "Microservice Architecture", "weight": 1 },
@@ -87,6 +95,7 @@
       { "type": "language", "name": "Javascript", "weight": 3 },
       { "type": "language", "name": "Coffeescript","weight": 2 },
       { "type": "language", "name": "Java", "weight": 2 },
+      { "type": "language", "name": "Rust", "weight": 2 },
       { "type": "language", "name": "CSS/Sass", "weight": 1 },
       { "type": "language", "name": "Python", "weight": 1 },
       { "type": "language", "name": "C#", "weight": 1 },
